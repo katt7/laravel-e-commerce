@@ -7,7 +7,10 @@
     <title>SHOW</title>
 </head>
 <body>
-    <h1>Gato (1)</h1>
-    <p>El mejor animalito para terminar con rascaduras gg</p>
+    <h1>{{ $product->title }} ({{ $product->id }})</h1>
+    <h3>{{ $product->description }}</h3>
+    <h3>{{ $product->price }}</h3>
+    <h3>{{ $product->stock }}</h3>
+    <h3>{{ $product->estatus }}</h3>
 </body>
 </html>
