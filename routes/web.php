@@ -24,3 +24,5 @@ Route::get('products/{product}', [ProductController::class, 'show'])->name('prod
 Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::match(['put','pach'], 'products/{product}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+// si queremos una ruta para esto Route::resource('products', ProductController::class);
