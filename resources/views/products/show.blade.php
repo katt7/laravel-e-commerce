@@ -7,10 +7,10 @@
     <title>SHOW</title>
 </head>
 <body>
-    <h1>{{ $product->title }} ({{ $product->id }})</h1>
-    <h3>{{ $product->description }}</h3>
-    <h3>{{ $product->price }}</h3>
-    <h3>{{ $product->stock }}</h3>
-    <h3>{{ $product->estatus }}</h3>
+   <center> <h1>{{ $product->title }} ({{ $product->id }})</h1></center>
+    <h3>DESCRIPCION: {{ $product->description }}</h3>
+    <h3>PRECIO: {{ $product->price }}</h3>
+    <h3>STOCK: {{ $product->stock }}</h3>
+    <h3>ESTADO: {{ $product->estatus }}</h3>
 </body>
 </html>

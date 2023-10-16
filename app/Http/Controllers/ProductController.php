@@ -11,9 +11,11 @@ class ProductController extends Controller
     public function index()
     {
        //$products = DB::table ('products')->get();
-       $products = Product::all();
+       //$products = Product::all();
        //dd($products);
-        return view ('products.index');
+        return view ('products.index')->with([
+            'products' => Product::all(),
+        ]);
     }
     public function create()
     {
