@@ -47,11 +47,16 @@ class ProductController extends Controller
     }
     public function edit($product)
     {
-        return "MOSTRANDO EL PRODUCTO CON ID PARA EDITAR: $product";
+        return view ("products.edit")->with([
+            'product' => Product::findOrFail($product),
+        ]);
     }
     public function update($product)
     {
-       // return "MOSTRANDO EL PRODUCTO CON ID PARA EDITAR: $product";
+        $product = Product::findOrFail($product);
+        $product->update(request()->all());
+
+        return $product;
     }
     public function destroy()
     {
