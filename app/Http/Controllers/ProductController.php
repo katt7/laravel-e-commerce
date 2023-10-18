@@ -58,8 +58,11 @@ class ProductController extends Controller
 
         return $product;
     }
-    public function destroy()
+    public function destroy($product)
     {
-        //return "MOSTRANDO EL PRODUCTO CON ID PARA EDITAR: $product";
+        $product = Product::findOrFail($product);
+        $product->delete();
+
+        return $product;
     }
 }
