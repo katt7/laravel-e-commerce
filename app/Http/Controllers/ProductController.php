@@ -40,7 +40,7 @@ class ProductController extends Controller
         }
 
         $product = Product::create(request()->all());
-
+        session()->flash('success', "El producto con ID {$product->id} fue creado exitosamente");
         // return redirect()->back();
         // return redirect()->action('MainController@index');
            return redirect()->route('products.index');
