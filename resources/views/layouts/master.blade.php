@@ -5,10 +5,17 @@
     <title>Plantilla</title>
 </head>
 <body>
-    @dump('errors')
+
     @if (session()->has('error'))
     <div class="alert alert-danger">
         {{ session()->get('error') }}
+    </div>
+    @endif
+    @if (isset($errors) && $errors->any())
+    <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
     </div>
     @endif
     @yield('conten')
