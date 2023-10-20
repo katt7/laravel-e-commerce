@@ -26,3 +26,7 @@ Route::match(['put','pach'], 'products/{product}', [ProductController::class, 'u
 Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 // si queremos una ruta para esto Route::resource('products', ProductController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
