@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('conten')
+@extends('layouts.app')
+@section('content')
    <center> <h1>EDITANDO PRODUCTO</h1></center>
    <form method="POST" action="{{ route('products.update', ['product'=>$product->id]) }}">
        @csrf
