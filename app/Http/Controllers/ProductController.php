@@ -51,23 +51,24 @@ class ProductController extends Controller
             return redirect()->route('products.index')->withSuccess("El producto con ID {$product->id} fue creado exitosamente");
 
     }
-    public function show($product)
+    public function show(Product $product)
     {
         //$product = DB::table('products')->where('id', $product)->first();
         //$product = DB::table('products')->find($product);
-        $product = Product::findOrfail($product);
+       // $product = Product::findOrfail($product);
         //dd($product);
         return view("products.show")->with([
             'product' => $product,
         ]);
     }
-    public function edit($product)
+    public function edit(Product $product)
     {
         return view ("products.edit")->with([
-            'product' => Product::findOrFail($product),
+            'product'=>$product,
+            //=> Product::findOrFail($product),
         ]);
     }
-    public function update($product)
+    public function update(Product $product)
     {
         $rules = [
             'title' => ['required', 'max:255'],
@@ -78,15 +79,15 @@ class ProductController extends Controller
         ];
         request()->validate($rules);
 
-        $product = Product::findOrFail($product);
+        //$product = Product::findOrFail($product);
         $product->update(request()->all());
 
         return redirect()->route('products.index')->withSuccess("El producto con ID {$product->id} fue Editado exitosamente");
 
     }
-    public function destroy($product)
+    public function destroy(Product $product)
     {
-        $product = Product::findOrFail($product);
+        //$product = Product::findOrFail($product);
         $product->delete();
 
         return redirect()->route('products.index')->withSuccess("El producto con ID {$product->id} fue Eliminado exitosamente");
