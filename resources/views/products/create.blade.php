@@ -26,7 +26,7 @@
                 <option {{ old('status' == 'available' ? 'selected': '') }} value="available">Disponible</option>
                 <option {{ old('status' == 'unavailable' ? 'selected': '') }}value="unavilable">No Disponible</option>
             </select>
-            <div class="form-row">
+            <div class="form-row mt-3">
                 <button type="submit" class="btn btn-primary btn-lg">Crear Product</button>
             </div>
         </div>

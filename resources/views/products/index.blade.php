@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>LISTA DE PRODUCTOS</h1>
-    <a class="btn btn-success" href="{{ route('products.create') }}">Crear</a>
+    <a class="btn btn-success mb-3" href="{{ route('products.create') }}">Crear</a>
         @empty($products)
             <div class="alert alert-warning">
                 LA LISTA DE PRODUCTOS ESTA VACIA
@@ -36,7 +36,7 @@
                                         <a class="btn btn-link" href="{{ route('products.edit',
                                         ['product' => $product->id]) }}">Editar</a>
 
-                                        <form  method="POST" action="{{ route('products.destroy', ['product' => $product->id]) }}">
+                                        <form  method="POST" class="d-inline" action="{{ route('products.destroy', ['product' => $product->id]) }}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-link">Eliminar</button>
