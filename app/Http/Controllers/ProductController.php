@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,25 +27,17 @@ class ProductController extends Controller
     {
         return view ('products.create');
     }
-    public function store()
+    public function store(ProductRequest $request)
     {
-        $rules = [
-            'title' => ['required', 'max:255'],
-            'description' => ['required', 'max:1000'],
-            'price' => ['required', 'min:1'],
-            'stock' => ['required', 'min:0'],
-            'status' => ['required', 'in:available, unavailable'],
-        ];
-        request()->validate($rules);
 
-        if(request()->status == 'available' && request()->stock == '0'){
-            //session()->put('error', 'Si esta disponible, debe tener stock');
-            //session()->flash('error', 'Si esta disponible, debe tener stock');
+        // if($request->status == 'available' && $request->stock == 0){
+        //     //session()->put('error', 'Si esta disponible, debe tener stock');
+        //     //session()->flash('error', 'Si esta disponible, debe tener stock');
 
-            return redirect()->back()->withInput(request()->all())->withErrors('Si esta disponible, debe tener stock');
-        }
+        //     return redirect()->back()->withInput($request->all())->withErrors('Si esta disponible, debe tener stock');
+        // }
 
-        $product = Product::create(request()->all());
+        $product = Product::create($request->validated());
         //session()->flash('success', "El producto con ID {$product->id} fue creado exitosamente");
         // return redirect()->back();
         // return redirect()->action('MainController@index');
@@ -68,19 +61,19 @@ class ProductController extends Controller
             //=> Product::findOrFail($product),
         ]);
     }
-    public function update(Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        $rules = [
-            'title' => ['required', 'max:255'],
-            'description' => ['required', 'max:1000'],
-            'price' => ['required', 'min:1'],
-            'stock' => ['required', 'min:0'],
-            'status' => ['required', 'in:available, unavailable'],
-        ];
-        request()->validate($rules);
+        // $rules = [
+        //     'title' => ['required', 'max:255'],
+        //     'description' => ['required', 'max:1000'],
+        //     'price' => ['required', 'min:1'],
+        //     'stock' => ['required', 'min:0'],
+        //     'status' => ['required', 'in:available, unavailable'],
+        // ];
+        // request()->validate($rules);
 
         //$product = Product::findOrFail($product);
-        $product->update(request()->all());
+        $product->update($request->validated());
 
         return redirect()->route('products.index')->withSuccess("El producto con ID {$product->id} fue Editado exitosamente");
 
