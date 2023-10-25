@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -15,10 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MainController::class, 'index'])->name('products.main');
 
+// Route::resource('products/mostrar-usuario', [ProductController::class, 'mostrarUsuario'])->name('products.mostrarusuario');
 Route::resource('products', ProductController::class);
 
 // Route::get('products', [ProductController::class, 'index'])->name('products.index');
